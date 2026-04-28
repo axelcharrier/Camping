@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      httpClient.ts:
+        specifier: link:@/utils/httpClient.ts
+        version: link:@/utils/httpClient.ts
       pinia:
         specifier: ^3.0.4
         version: 3.0.4(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3))
