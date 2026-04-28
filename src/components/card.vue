@@ -15,20 +15,19 @@
         <p v-if="order.status === 'pending'" class="text-gray-500 text-xs">Créée à {{ formatTime(order.created_at) }}</p>
         <p class="text-orange-700 text-sm">Pour {{ order.time }}</p>
       </div>
-      <div class="mb-6">
-        <p class="text-gray-700">2x Café</p>
-        <p class="text-gray-700">2x Café</p>
+      <div v-for="item in order.order_items" :key="item.id" class="mb-6">
+        <p class="text-gray-700">{{item.quantity}}x {{item.name}}</p>
       </div>
       <div v-if="order.status === 'pending'" class="flex flex-row items-center justify-between gap-1">
-        <button class="w-8/10 border-1 border-gray-200 rounded hover:bg-gray-200">
+        <button @click="$emit('markReady',order.id)" class="w-8/10 border-1 border-gray-200 rounded hover:bg-gray-200">
           Marquer prête
         </button>
-        <button class="w-2/10 text-red-600 border-1 border-gray-200 rounded hover:bg-red-200">
+        <button @click="$emit('cancelOrder',order.id)" class="w-2/10 text-red-600 border-1 border-gray-200 rounded hover:bg-red-200">
           Annuler
         </button>
       </div>
       <div v-else>
-        <button class="w-full border-1 border-gray-200 rounded bg-green-50 hover:bg-green-100">Servie</button>
+        <button @click="$emit('serveOrder',order.id)" class="w-full border-1 border-gray-200 rounded bg-green-50 hover:bg-green-100">Servie</button>
       </div>
     </div>
   </div>
@@ -38,6 +37,8 @@
 import statusBadge from '@/components/statusBadge.vue'
 import type { OrderWithItem } from '@/interfaces/orderWithItemInterface.ts'
 import type { PropType } from 'vue'
+
+const emit = defineEmits(['markReady', 'cancelOrder', 'serveOrder'])
 
 const props = defineProps({
   order: {
