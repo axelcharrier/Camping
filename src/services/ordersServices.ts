@@ -2,16 +2,15 @@
 
 import type { Order } from '@/interfaces/orderInterface.ts'
 import type { OrderItem } from '@/interfaces/orderItemInterface.ts'
-import { inject } from 'vue'
 
 export class OrderServices {
   private apiUrl = import.meta.env.VITE_APP_API_BASE_URL;
 
-  getOrdersAsync(){
+  async getOrdersAsync(){
       return fetch(this.apiUrl + 'orders')
   }
 
-  getOrderByIdAsync(id: number){
+  getOrderByIdAsync(id: string){
       return fetch(this.apiUrl + `/orders/${id}`)
   }
 
@@ -25,7 +24,7 @@ export class OrderServices {
       })
   }
 
-  markOrderReadyAsync(id: number){
+  markOrderReadyAsync(id: string){
       return fetch(this.apiUrl + `/orders/${id}`, {
           method: 'PUT',
           headers: {
@@ -35,17 +34,17 @@ export class OrderServices {
       })
   }
 
-  deleteOrderAsync(id: number){
+  deleteOrderAsync(id: string){
       return fetch(this.apiUrl + `/orders/${id}`, {
           method: 'DELETE'
       })
   }
 
-  getItemsByOrderIdAsync(orderId: number){
+  getItemsByOrderIdAsync(orderId: string){
       return fetch(this.apiUrl + `/orders/${orderId}/items`)
   }
 
-  addOrderItemAsync(orderId: number, item: OrderItem){
+  addOrderItemAsync(orderId: string, item: OrderItem){
       return fetch(this.apiUrl + `/orders/${orderId}/items`, {
           method: 'POST',
           headers: {
@@ -55,7 +54,7 @@ export class OrderServices {
       })
   }
 
-  deleteOrderItemAsync(orderId: number, itemId: number){
+  deleteOrderItemAsync(orderId: string, itemId: string){
       return fetch(this.apiUrl + `/orders/${orderId}/items/${itemId}`, {
           method: 'DELETE'
       })
