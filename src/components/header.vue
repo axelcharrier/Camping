@@ -1,11 +1,23 @@
 <script setup lang="ts">
-
+defineProps({
+  orderNumber: {
+    type: Number,
+    required: true,
+  },
+})
 </script>
 
 <template>
-  $END$
+  <div class="p-4 bg-white text-gray-800 flex items-center justify-between">
+    <div class="flex flex-col items-start justify-between">
+      <h1 class="text-2xl font-bold">Gestion des commandes</h1>
+      <p class="text-sm text-gray-500">{{ orderNumber }} commandes actives</p>
+    </div>
+    <nav>
+      <a href="" class="text-white bg-gray-800 text-sm px-4 py-3 rounded-md flex ">
+        <p class="mr-4">+</p>Nouvelle commande</a>
+    </nav>
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
