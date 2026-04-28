@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Order } from '@/interfaces/orderInterface.ts'
+import type { OrderWithItem } from '@/interfaces/orderWithItemInterface.ts'
 import card from '@/components/card.vue'
   const props = defineProps({
     orders: {
-      type: Array as () => Order[],
+      type: Array as () => OrderWithItem[],
       required: true,
     },
     type: {

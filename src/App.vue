@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import Header from '@/components/header.vue'
 import Column from '@/components/column.vue'
-import type { Order } from '@/interfaces/orderInterface.ts'
+import type { OrderWithItem } from '@/interfaces/orderWithItemInterface.ts'
 import { inject, onMounted, ref } from 'vue'
 import { OrderServices } from '@/services/ordersServices.ts'
 
 const orderServices = new OrderServices()
-const orders = ref<Order[]>([])
+const orders = ref<OrderWithItem[]>([])
 const tg: number = 3
-const ordersWaiting = ref<Order[]>([])
-const ordersReady = ref<Order[]>([])
+const ordersWaiting = ref<OrderWithItem[]>([])
+const ordersReady = ref<OrderWithItem[]>([])
 
 onMounted(async () => {
   const response = await orderServices?.getOrdersAsync()
@@ -30,5 +30,3 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
-<style scoped></style>

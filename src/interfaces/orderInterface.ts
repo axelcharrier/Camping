@@ -1,12 +1,11 @@
-import type { OrderItem } from '@/interfaces/orderItemInterface.ts'
-
 export interface Order {
+  created_at: string;
   id: string;
-  orderNumber: number;
-  customerName: string;
-  items: OrderItem[];
+  order_number: number;
+  customer_name: string;
   status: "pending" | "ready";
   time: string;
-  desiredTime?: string;
-  tableNumber?: string;
+  desired_time?: string;
+  table_number?: string;
+  updated_at: string;
 }

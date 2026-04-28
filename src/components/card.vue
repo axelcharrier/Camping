@@ -36,12 +36,12 @@
 
 <script setup lang="ts">
 import statusBadge from '@/components/statusBadge.vue'
-import type { Order } from '@/interfaces/orderInterface.ts'
+import type { OrderWithItem } from '@/interfaces/orderWithItemInterface.ts'
 import type { PropType } from 'vue'
 
 const props = defineProps({
   order: {
-    type: Object as PropType<Order>,
+    type: Object as PropType<OrderWithItem>,
     required: true,
   },
 })
