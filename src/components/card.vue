@@ -12,22 +12,43 @@
     </div>
     <div>
       <div class="mb-6">
-        <p v-if="order.status === 'pending'" class="text-gray-500 text-xs">Créée à {{ formatTime(order.created_at) }}</p>
-        <p class="text-orange-700 text-sm">Pour {{ order.time }}</p>
+        <p v-if="order.status === 'pending'" class="text-gray-500 text-xs">
+          Créée à {{ order.time }}
+        </p>
+        <p class="text-orange-700 text-sm" v-if="order.desired_time">
+          Pour {{ order.desired_time }}
+        </p>
       </div>
-      <div v-for="item in order.order_items" :key="item.id" class="mb-6">
-        <p class="text-gray-700">{{item.quantity}}x {{item.name}}</p>
+      <div class="mb-6">
+        <div v-for="item in order.order_items" :key="item.id" class="flex flex-row items-center">
+          <p class="text-gray-700">{{ item.quantity }}x {{ item.name }}</p>
+          <p v-if="item.notes" class="text-sm text-gray-500">({{item.notes}})</p>
+        </div>
       </div>
-      <div v-if="order.status === 'pending'" class="flex flex-row items-center justify-between gap-1">
-        <button @click="$emit('markReady',order.id)" class="w-8/10 border-1 border-gray-200 rounded hover:bg-gray-200">
+      <div
+        v-if="order.status === 'pending'"
+        class="flex flex-row items-center justify-between gap-1"
+      >
+        <button
+          @click="$emit('markReady', order.id)"
+          class="w-8/10 border-1 border-gray-200 rounded hover:bg-gray-200"
+        >
           Marquer prête
         </button>
-        <button @click="$emit('cancelOrder',order.id)" class="w-2/10 text-red-600 border-1 border-gray-200 rounded hover:bg-red-200">
+        <button
+          @click="$emit('cancelOrder', order.id)"
+          class="w-2/10 text-red-600 border-1 border-gray-200 rounded hover:bg-red-200"
+        >
           Annuler
         </button>
       </div>
       <div v-else>
-        <button @click="$emit('serveOrder',order.id)" class="w-full border-1 border-gray-200 rounded bg-green-50 hover:bg-green-100">Servie</button>
+        <button
+          @click="$emit('serveOrder', order.id)"
+          class="w-full border-1 border-gray-200 rounded bg-green-50 hover:bg-green-100"
+        >
+          Servie
+        </button>
       </div>
     </div>
   </div>

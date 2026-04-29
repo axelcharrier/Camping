@@ -30,8 +30,10 @@ const color = props.type === 'pending' ? 'text-orange-500' : 'text-green-500'
     <!--      header-->
     <div class="flex items-center justify-between m-auto">
       <div class="flex flex-row items-center justify-center py-4 gap-3">
-        <i class="pi pi-clock" :class="color"></i>
-        <h2 class="text-xl font-bold">En attente</h2>
+        <i v-if="type === 'pending'" class="pi pi-clock" :class="color"></i>
+        <i v-if="type !== 'pending'" class="pi pi-check" :class="color"></i>
+        <h2 v-if="type === 'pending'" class="text-xl font-bold">En attente</h2>
+        <h2 v-if="type !== 'pending'" class="text-xl font-bold">Prête</h2>
       </div>
       <p class="px-2 border-2 rounded border-gray-300">{{ orders.length }}</p>
     </div>

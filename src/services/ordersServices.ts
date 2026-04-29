@@ -2,6 +2,7 @@
 
 import type { Order } from '@/interfaces/orderInterface.ts'
 import type { OrderItem } from '@/interfaces/orderItemInterface.ts'
+import type { OrderCreate } from '@/interfaces/orderCreateInterface.ts'
 
 export class OrderServices {
   private apiUrl = import.meta.env.VITE_APP_API_BASE_URL;
@@ -14,7 +15,7 @@ export class OrderServices {
       return fetch(this.apiUrl + `/orders/${id}`)
   }
 
-  addOrderAsync(order: Order){
+  addOrderAsync(order: OrderCreate){
       return fetch(this.apiUrl + 'orders', {
           method: 'POST',
           headers: {
