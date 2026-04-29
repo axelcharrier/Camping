@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-gray-50 h-screen">
+  <div class="w-full bg-gray-50 h-screen text-gray-800">
     <div class="w-full m-auto mt-6 h-screen flex items-center justify-center">
       <div class="lg:w-1/2 w-full bg-white rounded-lg shadow p-6">
         <h2 class="text-2xl font-semibold mb-4 text-gray-800">Se connecter</h2>
