@@ -2,7 +2,7 @@
 import textInput from './textInput.vue'
 import { ref } from 'vue'
 
-const name = ref('')
+const name = ref('Client')
 const time = ref('')
 const emit = defineEmits(['updateName', 'updateTime'])
 </script>
