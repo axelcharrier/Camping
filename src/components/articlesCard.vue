@@ -6,7 +6,7 @@ import { ref, computed, onMounted } from 'vue'
 const emit = defineEmits(['addItemToCommand'])
 
 const menuItems = ref([
-  { category: 'Pizza', items: ['Pizza truffe', 'Pizza reine', 'Pizza 4 fromages', 'Pizza '] },
+  { category: 'Pizza', items: ['Pizza reine', 'Pizza 3 Fromages', 'Pizza fermière', 'Pizza Montagnarde', 'Pizza Diavola'] },
   { category: 'Panini', items: ['Panini jambon', 'Panini poulet', 'Panini chocolat'] },
 ])
 
